@@ -22,11 +22,14 @@ if (Icon=0)
 Menu, Tray, NoIcon
 }
 
-;若Login设定为0，则需维持先前的触摸板设定
+;若Login设定为0，则需维持先前的触摸板设定，若为1，则保持开启状态
 IniRead, OutputVar, C:\Program Files\Trackpad\trackpad.ini, Trackpad, Login
 Login:=OutputVar
 
+if(Login=1)
+{
 IniWrite,1, C:\Program Files\Trackpad\Trigger\trackpad.ini, Trackpad, Open
+}
 
 if (Login=0)
 {
@@ -39,7 +42,6 @@ Run C:\Program Files\Trackpad\trackpad\disable.vbs
 Menu, Tray, Icon, C:\Program Files\Trackpad\Icon\off.ico, ,1
 Menu, Tray, Tip , 关闭（Off）
 IniRead, OutputVar, C:\Program Files\Trackpad\trackpad.ini, Trackpad, Remind
-IniWrite, 0, C:\Program Files\Trackpad\Trigger\trackpad.ini, Trackpad, Open
 Remind:=OutputVar
 if(Remind=1)
 {
