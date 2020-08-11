@@ -26,6 +26,8 @@ Menu, Tray, NoIcon
 IniRead, OutputVar, C:\Program Files\Trackpad\trackpad.ini, Trackpad, Login
 Login:=OutputVar
 
+IniWrite,1, C:\Program Files\Trackpad\Trigger\trackpad.ini, Trackpad, Open
+
 if (Login=0)
 {
 ;读取最后一次设定信息
@@ -37,6 +39,7 @@ Run C:\Program Files\Trackpad\trackpad\disable.vbs
 Menu, Tray, Icon, C:\Program Files\Trackpad\Icon\off.ico, ,1
 Menu, Tray, Tip , 关闭（Off）
 IniRead, OutputVar, C:\Program Files\Trackpad\trackpad.ini, Trackpad, Remind
+IniWrite, 0, C:\Program Files\Trackpad\Trigger\trackpad.ini, Trackpad, Open
 Remind:=OutputVar
 if(Remind=1)
 {
